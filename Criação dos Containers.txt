@@ -1,0 +1,9 @@
+Criando o Container MSSQL
+docker run --name SqlServer -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=abcd.1234" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+Criando Container Mongo
+docker run --name MongoDb -d -p 27017:27017 -p 28017:28017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=abcd.1234 mongo:latest
+
+Criando a Migration e Aplicando
+dotnet ef migrations add FirstMigration
+dotnet ef database update
