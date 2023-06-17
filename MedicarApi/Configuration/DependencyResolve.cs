@@ -14,6 +14,7 @@ namespace MedicarApi.Configuration
             #region Repository
             services.AddSingleton<DataContext>();
             services.AddScoped<IMedicoRepository, MedicoRepository>();
+            services.AddScoped<IDisponibilidadeRepository, DisponibilidadeRepository>();
             services.AddScoped<IAgendaRepository, AgendaRepository>();
             #endregion
         }

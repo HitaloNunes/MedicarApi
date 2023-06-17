@@ -74,7 +74,7 @@ namespace MedicarApi.Repositories.Migrations
             modelBuilder.Entity("MedicarApi.Domain.Entities.DB.Disponibilidade", b =>
                 {
                     b.HasOne("MedicarApi.Domain.Entities.DB.Medico", "Medico")
-                        .WithMany("Agenda")
+                        .WithMany("Disponibilidade")
                         .HasForeignKey("IdMedico")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -84,7 +84,7 @@ namespace MedicarApi.Repositories.Migrations
 
             modelBuilder.Entity("MedicarApi.Domain.Entities.DB.Medico", b =>
                 {
-                    b.Navigation("Agenda");
+                    b.Navigation("Disponibilidade");
                 });
 #pragma warning restore 612, 618
         }

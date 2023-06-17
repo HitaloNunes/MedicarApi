@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicarApi.Repositories.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230616223919_FirstMigration")]
+    [Migration("20230617174712_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -77,7 +77,7 @@ namespace MedicarApi.Repositories.Migrations
             modelBuilder.Entity("MedicarApi.Domain.Entities.DB.Disponibilidade", b =>
                 {
                     b.HasOne("MedicarApi.Domain.Entities.DB.Medico", "Medico")
-                        .WithMany("Agenda")
+                        .WithMany("Disponibilidade")
                         .HasForeignKey("IdMedico")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -87,7 +87,7 @@ namespace MedicarApi.Repositories.Migrations
 
             modelBuilder.Entity("MedicarApi.Domain.Entities.DB.Medico", b =>
                 {
-                    b.Navigation("Agenda");
+                    b.Navigation("Disponibilidade");
                 });
 #pragma warning restore 612, 618
         }

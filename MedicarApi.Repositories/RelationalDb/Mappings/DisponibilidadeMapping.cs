@@ -22,8 +22,8 @@ namespace MedicarApi.Repositories.RelationalDb.Mappings
                 .IsRequired()
                 .HasColumnType("time");
 
-            builder.HasOne(z => z.Medico)
-                .WithMany(x => x.Agenda)
+            builder.HasOne<Medico>(z => z.Medico)
+                .WithMany(x => x.Disponibilidade)
                 .HasForeignKey(z => z.IdMedico);
         }
     }

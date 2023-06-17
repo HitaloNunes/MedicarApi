@@ -5,7 +5,7 @@
         public string Nome { get; set; } = string.Empty;
         public string CRM { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public virtual ICollection<Disponibilidade> Agenda { get; set; } = new List<Disponibilidade>();
+        public virtual ICollection<Disponibilidade>? Disponibilidade { get; set; }
 
     }
 }

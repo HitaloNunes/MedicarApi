@@ -34,9 +34,16 @@ namespace MedicarApi.Controllers
         [HttpPost]
         [Route("[action]")]
         [Authorize(Roles = "Hokage, Boss")]
-        public ActionResult CriarAgenda()
+        public async Task<ActionResult> CriarAgenda(CriarAgendaRequest request)
         {
-            return Ok();
+            CriarAgendaResponse response = await mediator.Send(request);
+            if(response.Status == "Agenda criada com sucesso!")
+            {
+                return Ok(response);
+            } else
+            {
+                return BadRequest(response);
+            }
         }
     }
 }

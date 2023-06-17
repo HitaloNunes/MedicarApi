@@ -1,6 +1,6 @@
 ﻿namespace MedicarApi.Domain.Entities.DB
 {
-    public class Entity
+    public abstract class Entity
     {
         protected Entity()
         {

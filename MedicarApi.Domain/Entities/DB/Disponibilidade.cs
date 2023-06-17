@@ -5,6 +5,6 @@
         public int IdMedico { get; set; }
         public DateTime Dia { get; set; } = new DateTime();
         public TimeSpan Horario { get; set; }
-        public virtual Medico Medico { get; set; } = new Medico();
+        public virtual Medico? Medico { get; set; }
     }
 }
