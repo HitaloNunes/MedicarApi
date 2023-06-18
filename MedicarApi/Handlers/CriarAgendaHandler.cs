@@ -38,7 +38,7 @@ namespace MedicarApi.Handlers
                         retorno.Status = "Agenda criada com sucesso!";
                     } else
                     {
-                        retorno.Status = $"O doutor(a) { medico.Nome } já possui uma agenda para esse dia!";
+                        retorno.Status = $"O(A) doutor(a) { medico.Nome } já possui uma agenda para esse dia!";
                     }
                 } else
                 {
