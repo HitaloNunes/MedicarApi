@@ -33,5 +33,13 @@ namespace MedicarApi.Repositories.RelationalDb.Functions
             List<Disponibilidade> retorno = await db.Disponibilidade.Where(z => z.Dia == dia && z.IdMedico == medico.Id).ToListAsync();
             return retorno;
         }
+
+        public async Task FlagDisponibilidadeAsync(int id)
+        {
+            Disponibilidade disponibilidade = await db.Disponibilidade.FindAsync(id) ?? new Disponibilidade();
+            disponibilidade.Disponivel = false;
+            db.Disponibilidade.Update(disponibilidade);
+            await db.SaveChangesAsync();
+        }
     }
 }

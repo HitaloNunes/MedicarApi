@@ -13,6 +13,11 @@ namespace MedicarApi.Repositories.RelationalDb.Functions
             db = _db;
         }
 
+        public async Task<Medico> FindByIdAsync(int id)
+        {
+            return await db.Medico.FindAsync(id) ?? new Medico();
+        }
+
         public async Task<Medico> FindByCRMAsync(string crm)
         {
             return await db.Medico.FirstOrDefaultAsync(z => z.CRM.ToLower() == crm.ToLower()) ?? new Medico();

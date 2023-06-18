@@ -33,6 +33,11 @@ namespace MedicarApi.Repositories.Migrations
                     b.Property<DateTime>("Dia")
                         .HasColumnType("datetime");
 
+                    b.Property<bool>("Disponivel")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<TimeSpan>("Horario")
                         .HasColumnType("time");
 

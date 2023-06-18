@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicarApi.Repositories.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230617174712_FirstMigration")]
+    [Migration("20230618165152_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -35,6 +35,11 @@ namespace MedicarApi.Repositories.Migrations
 
                     b.Property<DateTime>("Dia")
                         .HasColumnType("datetime");
+
+                    b.Property<bool>("Disponivel")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<TimeSpan>("Horario")
                         .HasColumnType("time");

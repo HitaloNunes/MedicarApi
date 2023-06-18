@@ -33,6 +33,7 @@ namespace MedicarApi.Repositories.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdMedico = table.Column<int>(type: "int", nullable: false),
+                    Disponivel = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     Dia = table.Column<DateTime>(type: "datetime", nullable: false),
                     Horario = table.Column<TimeSpan>(type: "time", nullable: false)
                 },

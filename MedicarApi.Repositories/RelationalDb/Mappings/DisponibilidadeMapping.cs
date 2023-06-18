@@ -14,6 +14,11 @@ namespace MedicarApi.Repositories.RelationalDb.Mappings
                 .IsRequired()
                 .HasColumnType("int");
 
+            builder.Property(z => z.Disponivel)
+                .IsRequired()
+                .HasDefaultValue(true)
+                .HasColumnType("bit");
+
             builder.Property(z => z.Dia)
                 .IsRequired()
                 .HasColumnType("datetime");
