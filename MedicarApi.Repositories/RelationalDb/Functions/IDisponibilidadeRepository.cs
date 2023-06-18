@@ -7,6 +7,8 @@ namespace MedicarApi.Repositories.RelationalDb.Functions
     {
         public void InsertNewAgendaAsync(CriarAgendaRequest request, Medico medico);
         public Task<List<Disponibilidade>> GetDisponibilidadesByDiaAndMedico(DateTime dia, Medico medico);
+        public Task<Disponibilidade> GetHorario(int IdMedico, DateTime dia, TimeSpan horario);
         public Task FlagDisponibilidadeAsync(int id);
+        public Task OpenDisponibilidadeAsync(int id);
     }
 }

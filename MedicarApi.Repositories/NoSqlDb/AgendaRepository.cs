@@ -18,9 +18,19 @@ namespace MedicarApi.Repositories.NoSqlDb
             agendaCollection = mongoDatabase.GetCollection<Consulta>(CollectionName);
         }
 
+        public async Task<Consulta> GetConsulta(string id)
+        {
+            return await agendaCollection.Find(z => z.id == id).FirstOrDefaultAsync();
+        }
+
         public async Task SaveConsulta(Consulta consulta)
         {
             await agendaCollection.InsertOneAsync(consulta);
+        }
+
+        public async Task DeleteConsulta(string id)
+        {
+            await agendaCollection.DeleteOneAsync(z => z.id == id);
         }
     }
 }

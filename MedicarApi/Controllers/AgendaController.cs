@@ -30,5 +30,14 @@ namespace MedicarApi.Controllers
                 return BadRequest(response.Error);
             }
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [Authorize(Roles = "Hokage, Nurse")]
+        public async Task<ActionResult> DesmarcarConsulta([FromRoute] DesmarcarConsultaRequest request)
+        {
+            string response = await mediator.Send(request);
+            return Ok();
+        }
     }
 }

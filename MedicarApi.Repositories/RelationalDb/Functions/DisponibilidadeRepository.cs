@@ -34,10 +34,23 @@ namespace MedicarApi.Repositories.RelationalDb.Functions
             return retorno;
         }
 
+        public async Task<Disponibilidade> GetHorario(int IdMedico, DateTime dia, TimeSpan horario)
+        {
+            return await db.Disponibilidade.FirstOrDefaultAsync(z => z.IdMedico == IdMedico && z.Dia == dia && z.Horario == horario) ?? new Disponibilidade();
+        }
+
         public async Task FlagDisponibilidadeAsync(int id)
         {
             Disponibilidade disponibilidade = await db.Disponibilidade.FindAsync(id) ?? new Disponibilidade();
             disponibilidade.Disponivel = false;
+            db.Disponibilidade.Update(disponibilidade);
+            await db.SaveChangesAsync();
+        }
+
+        public async Task OpenDisponibilidadeAsync(int id)
+        {
+            Disponibilidade disponibilidade = await db.Disponibilidade.FindAsync(id) ?? new Disponibilidade();
+            disponibilidade.Disponivel = true;
             db.Disponibilidade.Update(disponibilidade);
             await db.SaveChangesAsync();
         }
