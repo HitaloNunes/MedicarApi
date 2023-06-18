@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MedicarApi.Domain.Commands;
+using MedicarApi.Domain.Commands.Requests;
 using MedicarApi.Domain.Entities.NoSql;
 using MedicarApi.Repositories.NoSqlDb;
 

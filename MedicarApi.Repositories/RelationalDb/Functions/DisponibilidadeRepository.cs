@@ -39,6 +39,19 @@ namespace MedicarApi.Repositories.RelationalDb.Functions
             return await db.Disponibilidade.FirstOrDefaultAsync(z => z.IdMedico == IdMedico && z.Dia == dia && z.Horario == horario) ?? new Disponibilidade();
         }
 
+        public async Task<List<Disponibilidade>> GetHorariosDisponiveis(Medico medico, DateTime data_inicio, DateTime data_final)
+        {
+            List<Disponibilidade> disponibilidades = await db.Disponibilidade
+                .Where(z => z.IdMedico == medico.Id 
+                && (z.Dia.Date >= data_inicio.Date && z.Dia.Date <= data_final.Date)
+                && z.Disponivel)
+                .OrderBy(z => z.Dia)
+                .ThenBy(z => z.Horario)
+                .ToListAsync();
+
+            return disponibilidades;
+        }
+
         public async Task FlagDisponibilidadeAsync(int id)
         {
             Disponibilidade disponibilidade = await db.Disponibilidade.FindAsync(id) ?? new Disponibilidade();

@@ -26,14 +26,14 @@ namespace MedicarApi.Handlers
             MarcarConsultaValidation validation = new MarcarConsultaValidation();
             MarcarConsultaResponse retorno = new MarcarConsultaResponse()
             {
-                Error = new Error()
+                Error = new ErrorResponse()
                 {
                     Validation = await validation.ValidateAsync(request)
                 }
             };
             if (retorno.Error.Validation.IsValid)
             {
-                if(request.dia.Date == DateTime.Now.Date && DateTime.Now.TimeOfDay > TimeSpan.Parse(request.horario))
+                if(request.dia.Date + TimeSpan.Parse(request.horario) > DateTime.Now)
                 {
                     retorno.Error.Description = "A consulta não pode ser marcada no passado!";
                 } else
