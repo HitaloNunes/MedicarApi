@@ -18,6 +18,11 @@ namespace MedicarApi.Repositories.NoSqlDb
             agendaCollection = mongoDatabase.GetCollection<Consulta>(CollectionName);
         }
 
+        public async Task<List<Consulta>> GetConsultas()
+        {
+            return await agendaCollection.Find(z => true).ToListAsync();
+        }
+
         public async Task<Consulta> GetConsulta(string id)
         {
             return await agendaCollection.Find(z => z.id == id).FirstOrDefaultAsync();

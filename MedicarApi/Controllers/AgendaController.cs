@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MedicarApi.Domain.Commands;
 using MedicarApi.Domain.Commands.Requests;
 using MedicarApi.Domain.Commands.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -14,6 +15,14 @@ namespace MedicarApi.Controllers
         public AgendaController(IMediator _mediator)
         {
             mediator = _mediator;
+        }
+
+        [HttpGet]
+        [Route("")]
+        [Authorize(Roles = "Hokage, Nurse, Boss")]
+        public async Task<ActionResult> ConsultasMarcadas(BuscarConsultasMarcadasRequest request)
+        {
+            return Ok(await mediator.Send(request));
         }
 
         [HttpPost]

@@ -6,7 +6,6 @@ using MedicarApi.Domain.Entities.DB;
 using MedicarApi.Domain.Entities.NoSql;
 using MedicarApi.Repositories.NoSqlDb;
 using MedicarApi.Repositories.RelationalDb.Functions;
-using System.Reflection.Metadata;
 
 namespace MedicarApi.Handlers
 {
