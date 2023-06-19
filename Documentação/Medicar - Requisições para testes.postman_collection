@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "113db18a-cf89-4d3a-bc97-09988e2b9f90",
+		"name": "Medicar Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24859334"
+	},
+	"item": [
+		{
+			"name": "MedicoController",
+			"item": [
+				{
+					"name": "Cadastrar Medico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Pamela Isley\",\r\n  \"crm\": \"CRM 1010BR/CE\",\r\n  \"email\": \"dra.ivy@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7002/Medico/InserirMedico",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"Medico",
+								"InserirMedico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Agenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"crm\": \"CRM 1010BR/CE\",\r\n  \"dia\": \"2023-06-21\",\r\n  \"horarios\": [\"09:30\", \"10:30\", \"11:30\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7002/Medico/CriarAgenda",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"Medico",
+								"CriarAgenda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AgendaController",
+			"item": [
+				{
+					"name": "GetAvailableDiary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/consultas/Disponivel?medico=3&data_final=2023-06-18&data_inicio=2023-06-19",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"consultas",
+								"Disponivel"
+							],
+							"query": [
+								{
+									"key": "medico",
+									"value": "3"
+								},
+								{
+									"key": "medico",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "data_final",
+									"value": "2023-06-18"
+								},
+								{
+									"key": "data_inicio",
+									"value": "2023-06-19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MarcarConsulta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"medico_id\": 4,\r\n  \"dia\": \"2023-06-21\",\r\n  \"horario\": \"09:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7002/consultas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"consultas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConsultasMarcadas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7002/consultas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"consultas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DesmarcarConsulta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/consultas/6490bd3aef56f83faefa0217",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"consultas",
+								"6490bd3aef56f83faefa0217"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AgendasDisponiveis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/agendas?crm=CRM 1007BR&crm=CRM 1000BR&crm=CRM 1010BR/CE&data_inicio=2023-06-20&data_final=2023-06-25",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"agendas"
+							],
+							"query": [
+								{
+									"key": "crm",
+									"value": "CRM 1007BR"
+								},
+								{
+									"key": "crm",
+									"value": "CRM 1000BR"
+								},
+								{
+									"key": "crm",
+									"value": "CRM 1010BR/CE"
+								},
+								{
+									"key": "data_inicio",
+									"value": "2023-06-20"
+								},
+								{
+									"key": "data_final",
+									"value": "2023-06-25"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ //Hokage\r\n  \"username\": \"Hashirama Senju\",\r\n  \"password\": \"doakcqtvcabyz\"\r\n}\r\n\r\n/*{ //Boss\r\n  \"username\": \"Tsunade\",\r\n  \"password\": \"llcnyaccztpgqkv\"\r\n}*/\r\n\r\n/*{ //Nurse\r\n  \"username\": \"Sakura Haruno\",\r\n  \"password\": \"qledtzxsspiamoll\"\r\n}*/",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7002/Login/Authenticate",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7002",
+					"path": [
+						"Login",
+						"Authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ikhhc2hpcmFtYSBTZW5qdSIsInJvbGUiOiJIb2thZ2UiLCJuYmYiOjE2ODcyMDU0MTMsImV4cCI6MTY4NzIzNDIxMywiaWF0IjoxNjg3MjA1NDEzfQ.iIchAK2m3oqLOztt2oeShvawqOxcFJps2i4hGf7E3XM",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

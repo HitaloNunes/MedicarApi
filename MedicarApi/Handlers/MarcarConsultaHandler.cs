@@ -33,7 +33,7 @@ namespace MedicarApi.Handlers
             };
             if (retorno.Error.Validation.IsValid)
             {
-                if(request.dia.Date + TimeSpan.Parse(request.horario) > DateTime.Now)
+                if(request.dia.Date + TimeSpan.Parse(request.horario) < DateTime.Now)
                 {
                     retorno.Error.Description = "A consulta não pode ser marcada no passado!";
                 } else
